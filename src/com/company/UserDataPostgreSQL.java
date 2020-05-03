@@ -28,7 +28,7 @@ public abstract class UserDataPostgreSQL implements UserDataDriver {
         System.out.println("account has been created...");
         //String sql= "INSERT INTO  \"Urun\" (\"urunNo\",\"adi\",\"birimFiyati\",\"stokMiktari\") VALUES("+urun.getUrunNo()+",\'"+urun.getAdi()+"\',"+urun.getBirimFiyati()+","+urun.getStokMiktari()+")";
 
-        String sql= "INSERT INTO  \"UserData\" (\"userName\",\"userPassword\") VALUES(\'"+user.getUserName()+"\',"+user.getUserPassword()+")";
+        String sql= "INSERT INTO  \"UserData\" (\"userPassword\",\"userName\",\"userAccesType\") VALUES("+user.getUserPassword()+",\'"+user.getUserName()+"\',"+user.getUserAccesType()+") ";
 
         Connection conn=this.connect();
 

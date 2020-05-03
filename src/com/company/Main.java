@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args) {
         String newUserName;
         String newUserPassword;
+        String newUserAccessType;
         UserData user = null;
         Scanner input = new Scanner(System.in);
 
@@ -23,10 +24,12 @@ public class Main {
         coolerInteract.showTemparature();
 
         System.out.println("Create a user name:");
-        newUserName=input.nextLine();
+        newUserName = input.nextLine();
         System.out.println("Create a password:");
-        newUserPassword=input.nextLine();
-        user = new UserData(newUserName, newUserPassword);
+        newUserPassword = input.nextLine();
+        System.out.println("Create a user access type:");
+        newUserAccessType = input.nextLine();
+        user = new UserData(newUserName, newUserPassword, newUserAccessType);
         newUser.createAccount(user);
 
     }

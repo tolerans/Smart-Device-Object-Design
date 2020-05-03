@@ -6,9 +6,10 @@ public class UserData {
     private String userPassword;
     private String userAccesType;
 
-    public UserData(String userName, String userPassword){
+    public UserData(String userName, String userPassword , String userAccesType){
         this.userName = userName;
         this.userPassword = userPassword;
+        this.userAccesType = userAccesType;
     }
 
     public String getUserName() {
