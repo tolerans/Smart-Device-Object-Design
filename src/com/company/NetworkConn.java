@@ -24,6 +24,6 @@ public class NetworkConn implements CoolerDriver {
         System.out.println(measureTemparature());
     }
 
-};
+}
 
 

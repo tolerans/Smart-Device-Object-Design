@@ -2,6 +2,7 @@ package com.company;
 
 public abstract class TemparatureSensor implements CoolerDriver {
 
+
     @Override
     public int measureTemparature() {
 
