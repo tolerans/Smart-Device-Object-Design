@@ -1,6 +1,7 @@
 package com.company;
 
 public interface UserDataDriver {
-    void createAccount(UserData userName, UserData userPassword);
+    void createAccount(UserData user);
     void deleteAccount(String userName);
+
 }

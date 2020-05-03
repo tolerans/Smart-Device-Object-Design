@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDataPostgreSQL implements UserDataDriver {
+public abstract class UserDataPostgreSQL implements UserDataDriver {
 
     private Connection connect() {
 
