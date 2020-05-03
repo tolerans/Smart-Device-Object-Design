@@ -3,6 +3,10 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-	System.out.println("Test");
+        CoolerDriver driver = new NetworkConn();
+        driver.coolerOff();
+        driver.coolerOn();
+        driver.showTemparature();
+
     }
 }
