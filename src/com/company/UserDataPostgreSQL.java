@@ -28,7 +28,7 @@ public abstract class UserDataPostgreSQL implements UserDataDriver {
         //String sql= "INSERT INTO  public.\"UserData\" (userName,userPassword,userAccesType)"+" VALUES "+"("+user.getUserName()+","+user.getUserPassword()+","+user.getUserAccesType()+")" ;
         //System.out.println(sql);
         Connection conn=this.connect();
-        PreparedStatement st = conn.prepareStatement("INSERT INTO public.\"UserData\" (\"userName\",\"userPassword\",\"userAccesType\") VALUES (?, ?, ?)");
+        PreparedStatement st = conn.prepareStatement("INSERT INTO public.\"UserData\" (\"username\",\"userpassword\",\"useraccestype\") VALUES (?, ?, ?)");
         st.setString(1, user.getUserName());
         st.setString(2, user.getUserPassword());
         st.setString(3, user.getUserAccesType());
@@ -49,6 +49,19 @@ public abstract class UserDataPostgreSQL implements UserDataDriver {
             e.printStackTrace();
         }
 
+    }
+    public void checkAccount(String userName, String userPassword){
+        Connection conn=this.connect();
+        String sql = "SELECT *  FROM  public.\"UserData\" WHERE \"UserData\".username = \'"+userName+"\' and \"UserData\".userpassword = \'"+userPassword+"\'" ;
+        System.out.println(sql);
+        try
+        {
+            Statement st = conn.createStatement();
+            st.executeUpdate(sql);
+            st.close();
+        } catch (Exception e) {
+        System.out.println("\n\n!!Username or password is incorrect, please enter again!!\n\n");
+        }
     }
 /**
     public void deleteAccount(int urunNumarasi){
