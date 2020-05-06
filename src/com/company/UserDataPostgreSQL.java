@@ -58,6 +58,7 @@ public abstract class UserDataPostgreSQL implements UserDataDriver {
         {
             Statement st = conn.createStatement();
             st.executeUpdate(sql);
+            st.notify();
             st.close();
         } catch (Exception e) {
         System.out.println("\n\n!!Username or password is incorrect, please enter again!!\n\n");
