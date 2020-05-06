@@ -33,8 +33,9 @@ public class Main {
                 "| |__| (_) | (_) | |  __/ |    | |__| (_) | | | | |_| | | (_) | | |  __/ |      \\ V / | || |_| |\n" +
                 " \\____\\___/ \\___/|_|\\___|_|     \\____\\___/|_| |_|\\__|_|  \\___/|_|_|\\___|_|       \\_/  |_(_)___/ ");
 
-        System.out.println("If you have an account, sign in by pressing 'L'.");
-        System.out.println("If you do not have an account, register by pressing 'N'.");
+        System.out.println("If you have an account, sign in by pressing 'l | L'.");
+        System.out.println("If you do not have an account, register by pressing 'n | N'.");
+        System.out.println("If you want to quit the program, pressing 'q | Q'");
         choose = input.nextLine();
 
         while (!choose.matches("q|Q"))
@@ -46,31 +47,33 @@ public class Main {
                 System.out.println("Please enter a password:");
                 newUserPassword = input.next();
                 newUser.checkAccount(newUserName , newUserPassword);
-                if (newUser.getSetFlag() == 1 ) {
-                    System.out.println(
-                            "************User Command Line Interface**************\n" +
-                                    "Please select the following is the appropriate option\n" +
-                                    "Turn on the cooler by pressing [O]\n" +
-                                    "Turn off the cooler by pressing [F]\n" +
-                                    "Show temparature of room by pressing [S]\n" +
-                                    "Closing to connection Cooler System by pressing [Q]\n");
-                    option = input.next();
-                    switch (option) {
-                        case "O":
-                            coolerInteract.coolerOn();
-                            break;
-                        case "F":
-                            coolerInteract.coolerOff();
-                            break;
-                        case "S":
-                           coolerInteract.measureTemparature();
-                            break;
-                        case "Q":
-                            System.out.println("Exit");
-                            break;
+                while (!choose.matches("q|Q")){
+                    if (newUser.getSetFlag() == 1 ) {
+                        System.out.println(
+                                "************User Command Line Interface**************\n" +
+                                        "Please select the following is the appropriate option\n" +
+                                        "Turn on the cooler by pressing [O]\n" +
+                                        "Turn off the cooler by pressing [F]\n" +
+                                        "Show temparature of room by pressing [S]\n" +
+                                        "Closing to connection Cooler System by pressing [Q]\n");
+                        option = input.next();
+                        switch (option) {
+                            case "O":
+                                coolerInteract.coolerOn();
+                                break;
+                            case "F":
+                                coolerInteract.coolerOff();
+                                break;
+                            case "S":
+                               coolerInteract.measureTemparature();
+                                break;
+                            case "Q":
+                                System.out.println("Exit");
+                                break;
+                        }
                     }
+                    choose = input.nextLine();
                 }
-
             }
             if(choose.matches("n|N")){
                 System.out.println("Receiving new registration");
