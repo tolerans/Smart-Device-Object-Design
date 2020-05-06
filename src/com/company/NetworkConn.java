@@ -5,12 +5,12 @@ public class NetworkConn implements CoolerDriver {
 
     @Override
     public void coolerOn() {
-        System.out.println("Cooler is opening now! with Network");
+        System.out.println("Cooler is opening now! ");
     }
 
     @Override
     public void coolerOff() {
-        System.out.println("Cooler is shutting now! with Network");
+        System.out.println("Cooler is shutting now! ");
     }
 
     @Override

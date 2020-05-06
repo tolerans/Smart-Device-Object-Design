@@ -13,6 +13,7 @@ public class Main {
         String newUserPassword;
         String newUserAccessType;
         String choose;
+        String option;
         UserData user = null;
         Scanner input = new Scanner(System.in);
 
@@ -26,9 +27,6 @@ public class Main {
         CoolerDriver driver = new NetworkConn();
         CooolerInteraction coolerInteract = new CooolerInteraction(driver);
 
-        coolerInteract.coolerOff();
-        coolerInteract.coolerOn();
-        coolerInteract.showTemparature();
         System.out.println("  ____            _              ____            _             _ _            __     ___   ___  \n" +
                 " / ___|___   ___ | | ___ _ __   / ___|___  _ __ | |_ _ __ ___ | | | ___ _ __  \\ \\   / / | / _ \\ \n" +
                 "| |   / _ \\ / _ \\| |/ _ \\ '__| | |   / _ \\| '_ \\| __| '__/ _ \\| | |/ _ \\ '__|  \\ \\ / /| || | | |\n" +
@@ -48,7 +46,30 @@ public class Main {
                 System.out.println("Please enter a password:");
                 newUserPassword = input.next();
                 newUser.checkAccount(newUserName , newUserPassword);
+                if (newUser.getSetFlag() == 1 ) {
+                    System.out.println(
+                            "************User Command Line Interface**************\n" +
+                                    "Please select the following is the appropriate option\n" +
+                                    "Turn on the cooler by pressing [O]\n" +
+                                    "Turn off the cooler by pressing [F]\n" +
+                                    "Show temparature of room by pressing [S]\n" +
+                                    "Closing to connection Cooler System by pressing [Q]\n");
+                    option = input.next();
+                    switch (option) {
+                        case "O":
+                            coolerInteract.coolerOn();
 
+                        case "F":
+                            coolerInteract.coolerOff();
+
+                        case "S":
+                            coolerInteract.showTemparature();
+
+                        case "Q":
+                            System.out.println("Exit");
+                    }
+                }
+                break;
             }
             if(choose.matches("n|N")){
                 System.out.println("Receiving new registration");

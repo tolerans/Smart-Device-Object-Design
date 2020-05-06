@@ -1,9 +1,20 @@
 package com.company;
+
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class UserDataPostgreSQL implements UserDataDriver {
+
+    private int setFlag = 0;
+
+    public int getSetFlag() {
+        return setFlag;
+    }
+
+    public void setSetFlag(int setFlag) {
+        this.setFlag = setFlag;
+    }
+
+
 
     private Connection connect() {
 
@@ -50,18 +61,42 @@ public abstract class UserDataPostgreSQL implements UserDataDriver {
         }
 
     }
-    public void checkAccount(String userName, String userPassword){
+    @Override
+    public void checkAccount(String userName, String userPassword) throws SQLException {
         Connection conn=this.connect();
-        String sql = "SELECT *  FROM  public.\"UserData\" WHERE \"UserData\".username = \'"+userName+"\' and \"UserData\".userpassword = \'"+userPassword+"\'" ;
-        System.out.println(sql);
+        //String sql = "SELECT *  FROM  public.\"UserData\" WHERE \"UserData\".username = \'"+userName+"\' and \"UserData\".userpassword = \'"+userPassword+"\'" ;
+        String sql = "SELECT *  FROM  public.\"UserData\"";
+        //System.out.println(sql);
+        //PreparedStatement st = conn.prepareStatement("SELECT *  FROM  public.\"UserData\" WHERE \"UserData\".username = \'" + userName +"\' and \"UserData\".userpassword = \'" +userPassword +"\'");
+        //st.setString(1, userName);
+        //st.setString(2, userPassword);
+
         try
         {
             Statement st = conn.createStatement();
-            st.executeUpdate(sql);
-            st.notify();
+            //st.executeUpdate(sql);**/
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()){
+
+                if (!(userName == rs.getString("username") && userPassword == rs.getString("userpassword"))){
+
+                    System.out.println("This account registered in the system ");
+                    setSetFlag(1);
+                    break;
+                }
+            }
             st.close();
+            if (getSetFlag() == 1) {
+                System.out.println("Welcome "+userName+"");
+            }
+            else {
+                System.out.println("user is not registered in the system"+userName);
+            }
+
         } catch (Exception e) {
-        System.out.println("\n\n!!Username or password is incorrect, please enter again!!\n\n");
+            System.out.println("\n\n!!Username or password is incorrect, please enter again!!\n\n");
+            e.printStackTrace();
         }
     }
 /**
