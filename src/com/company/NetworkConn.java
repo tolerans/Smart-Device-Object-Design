@@ -15,13 +15,15 @@ public class NetworkConn implements CoolerDriver {
 
     @Override
     public int measureTemparature() {
-        int temp = (int)(Math.random() * 50 + 1);
+        int temp = (int)(Math.random() * 35 + 1);
+        System.out.println("Room temparature :"+temp);
         return temp;
     }
 
     @Override
     public void showTemparature() {
-        System.out.println(measureTemparature());
+        int tmp_temp = measureTemparature();
+        System.out.println("Room temparature :"+tmp_temp);
     }
 
 }

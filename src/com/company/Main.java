@@ -58,18 +58,19 @@ public class Main {
                     switch (option) {
                         case "O":
                             coolerInteract.coolerOn();
-
+                            break;
                         case "F":
                             coolerInteract.coolerOff();
-
+                            break;
                         case "S":
-                            coolerInteract.showTemparature();
-
+                           coolerInteract.measureTemparature();
+                            break;
                         case "Q":
                             System.out.println("Exit");
+                            break;
                     }
                 }
-                break;
+
             }
             if(choose.matches("n|N")){
                 System.out.println("Receiving new registration");
